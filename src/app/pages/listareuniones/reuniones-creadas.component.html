@@ -1,0 +1,73 @@
+
+<ng-container *ngIf="cargandoDatos; else elseTemplate">
+  <app-loading></app-loading>
+</ng-container>
+<ng-template #elseTemplate>
+  
+  <section class="titulo">
+    <h1>Lista de pizarras creadas <span *ngIf="reuniones.length>0">{{reuniones.length}}</span></h1>
+    <div class="boton">
+      <button 
+        [routerLink]="[ '/main/nuevaReunion' ]"
+        class="btn btn-primary">Crear nuevo <i class="fa fa-plus" aria-hidden="true"></i></button>
+    </div>
+  </section>
+
+  <ng-container *ngIf="reuniones.length > 0; else elseTemplate">
+    <table>
+      <tr>
+        <th id="fecha">Codigo</th>
+        <th>Titulo</th>
+        <th id="contrasenia">Contraseña</th>
+        <th id="codigo">Fecha Creacion</th>
+        <th id="opciones">Opciones</th>
+      </tr>
+      <tr class="mas-datos" *ngFor="let reunion of reuniones">
+        <td class="codigo">{{reunion.codigo}}</td>
+        <td>{{reunion.titulo}}</td>
+        <td class="contrasenia">{{reunion.contrasenia}}</td>
+        <td class="fecha">{{reunion.fechaCreacion}}</td>
+        <td class="opciones">
+          
+
+          <ng-container *ngIf="!cargando; else elseTemplate">
+            <button class="btn btn-primary" (click)="ingresar(reunion.codigo, reunion.contrasenia)">
+            <i class="fa fa-sign-in" aria-hidden="true"></i>
+          </button>
+          </ng-container>
+          <ng-template #elseTemplate>
+            <button class="btn btn-primary" (click)="ingresar(reunion.codigo, reunion.contrasenia)" disabled>
+            <i class="fa fa-sign-in" aria-hidden="true"></i>
+            </button>
+          </ng-template>
+
+          <ng-container *ngIf="!cargando; else eliminar">
+            <button class="btn btn-danger" (click)="eliminarReunion(reunion._id)">
+            <i class="fa fa-trash-o" aria-hidden="true"></i>
+            </button>
+          </ng-container>
+          
+          <ng-template #eliminar>
+            <button 
+              class="btn btn-danger"
+              (click)="eliminarReunion(reunion._id)"
+              disabled
+            >
+          
+            <i class="fa fa-trash-o" aria-hidden="true"></i>
+          
+          </button>
+          </ng-template>
+          
+        </td>
+      </tr>
+    </table>
+  </ng-container>
+  <ng-template #elseTemplate>
+    <div class="text-center divNotExit">
+      <p class="notExist">No tienes reuniones creadas</p>
+      <i class="fa fa-times equis" aria-hidden="true"></i>
+    </div>
+  </ng-template>
+</ng-template>
+

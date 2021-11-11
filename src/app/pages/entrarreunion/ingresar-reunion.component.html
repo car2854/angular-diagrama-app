@@ -1,0 +1,19 @@
+<h1 class="text-center">Entrar a una sala</h1>
+<form autocomplete="off" [formGroup]="ingresarForm" (submit)="ingresar()" class="mt-4">
+  <div class="row">
+    <div class="col-md-6">
+      <div class="form-group">
+        <label for="">Codigo</label>
+        <input type="text" class="form-control" formControlName="codigo" placeholder="Codigo">
+      </div>
+    </div>
+    <div class="col-md-6">
+      <div class="form-group">
+        <label for="">Contraseña</label>
+        <input type="text"  class="form-control" formControlName="contrasenia" placeholder="contraseña">
+      </div>
+    </div>
+  </div>
+  <ng-container *ngIf="!cargando; else elseTemplate"><button class="btn btn-primary mt-4" type="submit">Ingresar<i class="fa fa-arrow-right" aria-hidden="true"></i></button></ng-container>
+  <ng-template #elseTemplate><button class="btn btn-primary mt-4" type="submit" disabled>Ingresar<i class="fa fa-arrow-right" aria-hidden="true"></i></button></ng-template>
+</form>

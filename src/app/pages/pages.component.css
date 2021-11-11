@@ -1,0 +1,76 @@
+.navigator{
+  background-color: #024945;
+  position: fixed;
+  height: max-content;
+  width: 100%;
+  display: grid;
+  overflow: hidden;
+  z-index: 10;
+}
+
+.nav1{
+  background-color: #2148C1;
+  height: 50px;
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  color: white;
+  overflow: hidden;
+}
+
+.nav1 h5{
+  width: max-content;
+  margin: 0px 0px 0px 54px;
+}
+
+.nav1 ul{
+  padding: 11px 54px 0px 0px;
+  text-align: right;
+  list-style: none;
+}
+
+.nav1 ul li p{
+  width: max-content;
+  float: right;
+  cursor: pointer;
+}
+
+
+.nav2{
+  background-color: #3359C8;
+  height: 35px;
+}
+
+.content{
+  top: 80px;
+  position: relative;
+  padding: 25px 80px;
+}
+
+.nav1 h5{
+  padding: 10px 35px 0px 0px;
+}
+
+.nav2 ul{
+  height: 100%;
+  display: flex;
+  list-style: none;
+  color: white;
+  justify-content: flex-end;
+}
+
+.nav2 ul li{
+  width: 140px;
+  text-align: center;
+  cursor: pointer;
+  transition: 0.3s;
+  padding: 4px 0px 0px 0px;
+}
+
+.nav2 ul li:hover{
+  background-color: #2148C0;
+}
+
+.active{
+  font-weight: bold;
+  background-color: #2148C0;
+}

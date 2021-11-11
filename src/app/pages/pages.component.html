@@ -1,0 +1,33 @@
+<div class="main-panel">
+  <nav class="navigator">
+    <div class="nav1">
+      <h5>{{user.name}}</h5>
+      <ul>
+        <li 
+          (click)="cerrarSesion()"
+        >
+        <p>Salir</p>
+      </li>
+      </ul>
+    </div>
+    <div class="nav2">
+      <ul>
+        <li
+          [routerLink]="['/main/listaReuniones']"
+          routerLinkActive="active"
+        >Lista de Pizarras</li>
+        <li
+          [routerLink]="['/main/entrarReunion']"
+          routerLinkActive="active"
+        >Ingresar</li>
+      </ul>
+    </div>
+  </nav>
+
+  <div class="content">
+    <div *ngIf="!websocketService.socketStatus" class="alert alert-danger" role="alert">
+      Problemas de conexion!
+    </div>
+    <router-outlet></router-outlet>  
+  </div>
+</div>

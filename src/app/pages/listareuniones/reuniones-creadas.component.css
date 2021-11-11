@@ -1,0 +1,88 @@
+table{
+
+  width: 100%;
+  border: 1px solid black;
+
+}
+
+i{
+  margin: 0px 0px 0px 5px;
+}
+
+table tr th{
+  padding: 5px 8px;
+  border-bottom: 1px solid black;
+  border-right: 1px solid black;
+  background-color: #ff80aa50;
+}
+
+table tr td{
+  border-right: 1px solid black;
+  padding: 5px 8px;
+}
+
+table .mas-datos:hover{
+  background-color: #3358c821;
+}
+
+table tr #fecha{
+  width: 150px;
+  text-align: center;
+}
+
+table tr .fecha{
+  text-align: center;
+}
+
+table tr #opciones{
+  text-align: center;
+  width: 180px;
+}
+
+table tr .opciones{
+  display: flex;
+  justify-content: center;
+  gap: 8px;
+}
+
+#contrasenia, #codigo{
+  text-align: center;
+  width: 150px;
+}
+
+
+.codigo, .contrasenia{
+  text-align: center;
+}
+
+.notExist{
+  font-size: 24px;
+}
+
+.titulo{
+  margin: 0px 0px 40px 0px;
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+}
+
+.boton{
+  justify-self: right;
+}
+
+.equis{
+  font-size: 100px;
+  color: red;
+}
+
+.notExist{
+  margin: 0px;
+}
+
+.divNotExit{
+  padding: 30px 0px;
+  border: 1px solid #2148C0;
+}
+
+span{
+  font-weight: 400;
+}

@@ -1,0 +1,42 @@
+.grupo{
+  position: relative;
+  margin: auto;
+  top: 50px;
+  display: flex;
+  gap: 0px;
+  width: max-content;
+  color: white;
+  z-index: 1;
+}
+
+.inicio{
+  position: relative;
+  background-color: #2148C1;
+  width: 100vw;
+  height: 100vh;
+  z-index: 1;
+  overflow: hidden;
+}
+
+.inicio::after{
+  position: absolute;
+  content: '';
+  transform: rotate(48deg);
+  top: -150px;
+  left: -300px;
+  /* opacity: 0.5; */
+  width: 1000px;
+  height: 1000px;
+  border-radius: 30px;
+  background-color: #3359C8;
+  z-index: 0;
+}
+
+.contenedor{
+  width: max-content;
+}
+
+.auth-container{
+  border-radius: 5px;
+  padding: 30px;
+}

@@ -1,0 +1,46 @@
+.form-group{
+  margin: 10px 0px;
+}
+
+h3{
+  text-transform: uppercase;
+  margin: 0px 0px 50px 0px;
+}
+
+.formulario{
+  width: 300px;
+}
+
+input{
+  background-color: #2148C1;
+  color: white;
+}
+
+input:focus{
+  background-color: #2148C1;
+  color: white;
+}
+
+::placeholder{
+  color: white;
+  opacity: 0.5;
+}
+
+
+button{
+  width: 100%;
+  margin: 40px 0px 15px 0px;
+  border: 1px solid white;
+  color: #2148C1;
+  background-color: white;
+}
+
+button:hover{
+  background-color: #2148C1;
+  color: white;
+}
+
+
+a{
+  color: white;
+}
