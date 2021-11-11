@@ -2,7 +2,7 @@ div.group{
   position: relative;
   width: 110px;
   height: 110px;
-  margin: auto;
+  margin: 20px auto;
 }
 
 div.group .square{

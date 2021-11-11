@@ -130,7 +130,7 @@ hr{
 
 .chatBox .chat-content{
   background-color: white;
-  transition: 0.5s;
+  transition: 0.35s;
 }
 
 .chatBox .chat-content input{

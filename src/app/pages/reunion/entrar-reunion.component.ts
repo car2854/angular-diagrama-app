@@ -186,6 +186,23 @@ export class EntrarReunionComponent implements OnInit {
     
   }
 
+  public hiddenChat = (event:any) => {
+    
+    let existe: boolean = false;
+    event.path.forEach((element:any) => {
+      if (element.id === 'chatBox'){
+        existe = true;
+      }
+    });
+    console.log(existe);
+    
+    if (!existe && this.showChat){
+      this.chatBox.nativeElement.classList.remove('show-chat');
+      this.chatBox.nativeElement.classList.add('hidden-chat');
+      this.showChat = !this.showChat;
+    }
+  }
+
   ngOnDestroy(): void {
     this.subcriptionEntradaUsuario.unsubscribe();
     this.subcriptionObtenerDiagrama.unsubscribe();

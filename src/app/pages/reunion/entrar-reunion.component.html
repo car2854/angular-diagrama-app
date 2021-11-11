@@ -2,75 +2,79 @@
   <app-loading></app-loading>
 </ng-container>
 
-<ng-template #elseTemplate>  
-  <input type="file" #seleccionarArchivo (change)="ArchivoSeleccionado($event)" hidden>
-  <h1 class="text-center">{{reunion.titulo}}</h1>
-  <div id="infor">
-    <p>codigo: 
-      <span>{{reunion.codigo}}</span>
-    </p>
-    <p>contraseña: 
-      <span>{{reunion.contrasenia}}</span>
-    </p>
-  </div>
-  <div class="botones mb-3">
-    
-    <button *ngIf="isAdmin" class="btn btn-primary"(click)="leerDiagrama()">Cargar Archivo <i class="fa fa-upload" aria-hidden="true"></i></button>
-    <button class="btn btn-primary" (click)="descargarDiagrama()" >Descargar Archivo <i class="fa fa-download" aria-hidden="true"></i></button>
-    <button class="btn btn-success" (click)="descargar()">Descargar Diagrama <i class="fa fa-download" aria-hidden="true"></i></button>
-    <button class="btn btn-danger" (click)="salirReunion()">Salir <i class="fa fa-sign-out" aria-hidden="true"></i></button>
-  </div>
+
+  <ng-template #elseTemplate>
+    <div (click)="hiddenChat($event)">
+
+      <input type="file" #seleccionarArchivo (change)="ArchivoSeleccionado($event)" hidden>
+      <h1 class="text-center">{{reunion.titulo}}</h1>
+      <div id="infor">
+        <p>codigo: 
+          <span>{{reunion.codigo}}</span>
+        </p>
+        <p>contraseña: 
+          <span>{{reunion.contrasenia}}</span>
+        </p>
+      </div>
+      <div class="botones mb-3">
+        <button *ngIf="isAdmin" class="btn btn-primary"(click)="leerDiagrama()">Cargar Archivo <i class="fa fa-upload" aria-hidden="true"></i></button>
+        <button class="btn btn-primary" (click)="descargarDiagrama()" >Descargar Archivo <i class="fa fa-download" aria-hidden="true"></i></button>
+        <button class="btn btn-success" (click)="descargar()">Descargar Diagrama <i class="fa fa-download" aria-hidden="true"></i></button>
+        <button class="btn btn-danger" (click)="salirReunion()">Salir <i class="fa fa-sign-out" aria-hidden="true"></i></button>
+      </div>
+      
+      <div class="userOnline">
+        <div class="usuariosOnline">
+          <p class="text-center">Usuarios Online <i class="fa fa-users" aria-hidden="true"></i></p>
+          <hr>
+          <ul>
+            <li *ngFor="let usuario of usuariosOnline">{{usuario.name}}</li>
+          </ul>
+        </div>
+        
+     </div>
+
+    </div>  
+  </ng-template>
   
-  
-  <div class="userOnline">
-    <div class="usuariosOnline">
-      <p class="text-center">Usuarios Online <i class="fa fa-users" aria-hidden="true"></i></p>
-      <hr>
-      <ul>
-        <li *ngFor="let usuario of usuariosOnline">{{usuario.name}}</li>
-      </ul>
+  <div (click)="hiddenChat($event)">
+    <div id="pizarra">
+      <div class="paleta">
+        <div class="lv">
+          <div class="title" (click)="clickPaleta('nivel2')">
+            <code>nivel 2</code>
+          </div>
+          <div id="paletaNivel2" #paletaNivel2 class="show2"></div>
+        </div>
+        <div class="lv">
+          <div class="title" (click)="clickPaleta('nivel3')">
+            <code>nivel 3</code>
+          </div>
+          <div id="paletaNivel3" #paletaNivel3 class="show3"></div>
+        </div>
+      </div>
+      <div class="diagrama text-center">
+        <div id="diagrama" (keyup)="cambioT($event)" (mouseup)="cambioM($event)"></div>
+      </div>
     </div>
     
-</div>
-
-</ng-template>
-
-<div id="pizarra">
-  <div class="paleta">
-    <div class="lv">
-      <div class="title" (click)="clickPaleta('nivel2')">
-        <code>nivel 2</code>
+    <div class="chatBox" id="chatBox">
+      <div class="chat-title" (click)="clickChat()">
+        <p>Mensajes</p>
       </div>
-      <div id="paletaNivel2" #paletaNivel2 class="show2"></div>
-    </div>
-    <div class="lv">
-      <div class="title" (click)="clickPaleta('nivel3')">
-        <code>nivel 3</code>
-      </div>
-      <div id="paletaNivel3" #paletaNivel3 class="show3"></div>
-    </div>
-  </div>
-  <div class="diagrama text-center">
-    <div id="diagrama" (keyup)="cambioT($event)" (mouseup)="cambioM($event)"></div>
-  </div>
-</div>
-
-<div class="chatBox">
-  <div class="chat-title" (click)="clickChat()">
-    <p>Mensajes</p>
-  </div>
-  <div class="chat-content hidden-chat" #chatBox>
-
-    <div class="chat-body">
-
-      <div>
-        <p>Carlos:</p>
-        <p>Hola a todos</p>
-      </div>
-
-    </div>
+      <div class="chat-content hidden-chat" #chatBox>
     
-    <input type="text" (keypress)="sendMessage($event)">
-
+        <div class="chat-body">
+    
+          <div>
+            <p>Carlos:</p>
+            <p>Hola a todos</p>
+          </div>
+    
+        </div>
+        
+        <input type="text" (keypress)="sendMessage($event)">
+    
+      </div>
+    </div>
   </div>
-</div>
