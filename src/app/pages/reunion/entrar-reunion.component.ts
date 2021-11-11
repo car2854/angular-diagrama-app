@@ -27,9 +27,11 @@ export class EntrarReunionComponent implements OnInit {
   @ViewChild('seleccionarArchivo') cargarArchivo!: ElementRef;
   @ViewChild('paletaNivel2') palette2!: ElementRef;
   @ViewChild('paletaNivel3') palette3!: ElementRef;
+  @ViewChild('chatBox') chatBox!: ElementRef;
 
   private showPalette2: boolean = true;
   private showPalette3: boolean = true;
+  private showChat: boolean = false;
 
 
   private user! :User;
@@ -138,7 +140,6 @@ export class EntrarReunionComponent implements OnInit {
 
   }
 
-
   public clickPaleta = (status: string) => {
     if (status === 'nivel2'){
       if (this.showPalette2){
@@ -159,6 +160,30 @@ export class EntrarReunionComponent implements OnInit {
       }
       this.showPalette3 = !this.showPalette3;
     }
+  }
+
+  public clickChat = () => {
+    if (this.showChat){
+      this.chatBox.nativeElement.classList.remove('show-chat');
+      this.chatBox.nativeElement.classList.add('hidden-chat');
+    }else{
+      this.chatBox.nativeElement.classList.remove('hidden-chat');
+      this.chatBox.nativeElement.classList.add('show-chat');
+    }
+    this.showChat = !this.showChat;
+  }
+
+  public sendMessage = (event: any) => {
+    if (event.code === 'Enter'){
+      let target = event.target || event.srcElement
+      if(target.value.trim().length > 0){
+        // TODO enviar mensaje por Socket
+        console.log(target.value);
+        
+        target.value = '';
+      }
+    }
+    
   }
 
   ngOnDestroy(): void {
@@ -208,8 +233,6 @@ export class EntrarReunionComponent implements OnInit {
       })
   }
 
-
-
   // descargar Diagrama SVG
   public descargar(){
 
@@ -237,12 +260,10 @@ export class EntrarReunionComponent implements OnInit {
     });
   }
 
-
   public descargarDiagrama = () => {
     const diagrama = this.diagram.model.toJson();
     download(diagrama, `${this.reunion.titulo}.json`, "text/plain");
   }
-
 
   public ArchivoSeleccionado = (event: Event) => {
     let linkDataArray
@@ -265,17 +286,13 @@ export class EntrarReunionComponent implements OnInit {
     reader.readAsText(file);
   }
 
-
   public leerDiagrama = () => {
     this.cargarArchivo.nativeElement.click();
     this.reunionSocketService.enviarDiagrama(this.diagram.model.toJson(), this.user._id, this.reunion._id);
   }
 
-
   public ngAfterViewInit() {    
-
     this.cargarDatosDiagrama();
-
   }
 
   public cargarDatosDiagrama(){

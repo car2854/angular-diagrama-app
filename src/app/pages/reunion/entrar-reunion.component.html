@@ -20,6 +20,19 @@
     <button class="btn btn-success" (click)="descargar()">Descargar Diagrama <i class="fa fa-download" aria-hidden="true"></i></button>
     <button class="btn btn-danger" (click)="salirReunion()">Salir <i class="fa fa-sign-out" aria-hidden="true"></i></button>
   </div>
+  
+  
+  <div class="userOnline">
+    <div class="usuariosOnline">
+      <p class="text-center">Usuarios Online <i class="fa fa-users" aria-hidden="true"></i></p>
+      <hr>
+      <ul>
+        <li *ngFor="let usuario of usuariosOnline">{{usuario.name}}</li>
+      </ul>
+    </div>
+    
+</div>
+
 </ng-template>
 
 <div id="pizarra">
@@ -42,11 +55,22 @@
   </div>
 </div>
 
+<div class="chatBox">
+  <div class="chat-title" (click)="clickChat()">
+    <p>Mensajes</p>
+  </div>
+  <div class="chat-content hidden-chat" #chatBox>
 
-<div class="usuariosOnline">
-  <p class="text-center">Usuarios Online <i class="fa fa-users" aria-hidden="true"></i></p>
-  <hr>
-  <ul>
-    <li *ngFor="let usuario of usuariosOnline">{{usuario.name}}</li>
-  </ul>
+    <div class="chat-body">
+
+      <div>
+        <p>Carlos:</p>
+        <p>Hola a todos</p>
+      </div>
+
+    </div>
+    
+    <input type="text" (keypress)="sendMessage($event)">
+
+  </div>
 </div>

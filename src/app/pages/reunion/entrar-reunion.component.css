@@ -13,11 +13,11 @@ span{
 }
 
 .botones{
+  align-self: center;
   display: flex;
   gap: 5px;
-  align-self: center;
-  justify-self: right;
   justify-content: center;
+  justify-self: right;
 }
 
 
@@ -27,37 +27,37 @@ span{
 }
 
 #diagrama {
-  width: 100%;
-  height: 400px;
+  background-color: #2149c028;
   border: 1px solid #2148C0;
   border-radius: 5px;
-  background-color: #2149c028;
+  height: 400px;
   overflow: hidden;
+  width: 100%;
 }
 
 #paletaNivel2 {
-  width: 100%;
+  background-color: #2149c028;
   border: 1px solid #2148C0;
   border-radius: 5px;
-  background-color: #2149c028;
   overflow: hidden;
   transition: 0.3s;
+  width: 100%;
 }
 
 #paletaNivel3 {
-  width: 100%;
+  background-color: #2149c028;
   border: 1px solid #2148C0;
   border-radius: 5px;
-  background-color: #2149c028;
   overflow: hidden;
   transition: 0.3s;
+  width: 100%;
 }
 
 .paleta{
-  width: 13%;
-  text-align: center;
   height: 400px;
+  text-align: center;
   overflow-y: scroll;
+  width: 13%;
 }
 
 .show2{
@@ -89,15 +89,68 @@ hr{
   margin: 0px 0px 10px 0px;
 }
 
-.usuariosOnline{
-  padding: 13px 5px 0px 0px;
+.userOnline{
   margin: 20px 0px;
-  border: 1px solid #2148C0;
-  border-radius: 5px;
 }
 
+.usuariosOnline{
+  border: 1px solid #2148C0;
+  border-radius: 5px;
+  padding: 13px 5px 0px 0px;
+}
+
+
 .usuariosOnline ul{
-  list-style: none;
   display: grid;
   grid-template-columns: repeat(5, 1fr);
+  list-style: none;
+}
+
+.chatBox{
+  background-color: #3358c8e0;
+  bottom: 0px;
+  margin: 0px 10px;
+  position: fixed;
+  right: 0px;
+  text-align: center;
+  width: 280px;
+  z-index: 10;
+}
+
+.chatBox .chat-title{
+  cursor: pointer;
+  padding: 8px 0px;
+}
+
+.chatBox .chat-title p{
+  color: white;
+  margin: auto;
+  width: max-content;
+}
+
+.chatBox .chat-content{
+  background-color: white;
+  transition: 0.5s;
+}
+
+.chatBox .chat-content input{
+  border: 1px solid #3358c8;
+  border-radius: 3px;
+  margin: 5px 5px;
+  padding: 3px 5px;
+  font-size: 12px;
+  width: 100%;
+}
+
+.chatBox .chat-content .chat-body{
+  height: 250px;
+  overflow-y: scroll;
+}
+
+.hidden-chat{
+  height: 0px;
+}
+
+.show-chat{
+  height: 290px;
 }
