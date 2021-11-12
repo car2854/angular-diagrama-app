@@ -106,6 +106,12 @@ hr{
   list-style: none;
 }
 
+.usuariosOnline ul li button{
+  padding: 3px 10px;
+  margin: 0px 0px 0px 8px;
+  font-size: 12px;
+}
+
 .chatBox{
   background-color: #3358c8e0;
   bottom: 0px;

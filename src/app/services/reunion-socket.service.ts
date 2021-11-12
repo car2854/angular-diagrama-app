@@ -47,6 +47,19 @@ export class ReunionSocketService {
     }
     this.webSocketService.emit('enviarMensaje', payload);
   }
+
+  public kickUser = (reunion: string, idUsuario: string, idUsuarioKick: string) => {
+    const payload = {
+      de: idUsuario,
+      room: reunion,
+      userKick: idUsuarioKick
+    }
+    this.webSocketService.emit('kickUser', payload);
+  }
+
+  public escucharKickUser = () => {
+    return this.webSocketService.listen('escucharKickUser');
+  }
   
   public escucharMensajes = () => {
     return this.webSocketService.listen('escucharMensajes')

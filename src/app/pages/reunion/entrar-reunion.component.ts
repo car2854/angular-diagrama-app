@@ -55,6 +55,7 @@ export class EntrarReunionComponent implements OnInit {
   private subcriptionObtenerDiagrama!: Subscription;
   private subcriptionSalidaUsuario!: Subscription;
   private subcriptionMensaje!: Subscription;
+  private subcriptionKickUser!: Subscription;
 
   constructor(
     private router: Router,
@@ -88,7 +89,9 @@ export class EntrarReunionComponent implements OnInit {
         
         this.cargando = false;
         this.reunion = resp.reunion;
-        this.isAdmin = (this.reunion.user === this.user._id);   
+        this.isAdmin = (this.reunion.user === this.user._id);
+        console.log(this.isAdmin);
+           
         this.cargarDiagrama();
 
       }, (err:any) => {
@@ -155,6 +158,14 @@ export class EntrarReunionComponent implements OnInit {
           this.chatBox.nativeElement.classList.add('show-chat');
         }
 
+      });
+
+    this.subcriptionKickUser = this.reunionSocketService.escucharKickUser()
+      .subscribe((resp:any) => {
+        if (resp.userKick === this.user._id){
+          this.salirReunion();
+          Swal.fire('Ups', 'Fuiste Expulsado por el Admin', 'info');
+        }
       });
 
   }
@@ -271,6 +282,22 @@ export class EntrarReunionComponent implements OnInit {
       }, (err:any) => {
         Swal.fire('Error', "No se pudo cargar los datos del diagrama", 'error');
       })
+  }
+
+  public kickUser = (idUser: string) => {
+    Swal.fire({
+      title: 'Estas seguro?',
+      text: "Quieres expulsar a este usuario de la reunion?",
+      icon: 'warning',
+      showCancelButton: true,
+      confirmButtonColor: '#3085d6',
+      cancelButtonColor: '#d33',
+      confirmButtonText: 'Si'
+    }).then((result) => {
+      if (result.isConfirmed) {
+        this.reunionSocketService.kickUser(this.reunion._id, this.user._id, idUser);
+      }
+    })
   }
 
   // descargar Diagrama SVG
