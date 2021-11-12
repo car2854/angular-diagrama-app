@@ -28,23 +28,18 @@ const configDiagram = (diagram:any) => {
     )
   );
 
-  diagram.linkTemplate = $(go.Link, {
-    relinkableFrom: true, relinkableTo: true, reshapable: true, resegmentable: true
-  },
-  new go.Binding("points").makeTwoWay(),
-  // remember the Link.routing too
-  new go.Binding("routing", "routing", go.Binding.parseEnum(go.Link, go.Link.AvoidsNodes))
-    .makeTwoWay(go.Binding.toString),
-  $(go.Shape), $(go.Shape, { 
-    toArrow: "Standard"
-  }), $(go.Panel, "Auto", $(go.Shape, "Rectangle", { 
-    fill: "#2149c000",
-    stroke: "#2149c000"
-  }), $(go.TextBlock, { 
-    margin: 3, 
-    editable: true, 
-    text: 'descripcion',
-  }, new go.Binding("text", "text").makeTwoWay())));
+  diagram.linkTemplate = $(go.Link, 
+    $(go.Shape), $(go.Shape, { 
+      toArrow: "Standard"
+    }), $(go.Panel, "Auto", $(go.Shape, "Rectangle", { 
+      fill: "#2149c000",
+      stroke: "#2149c000"
+    }), $(go.TextBlock, { 
+      margin: 3, 
+      editable: true, 
+      text: 'descripcion',
+    }, new go.Binding("text", "text").makeTwoWay()))
+  );
 
   diagram.groupTemplate =
   $(go.Group, "Vertical",
