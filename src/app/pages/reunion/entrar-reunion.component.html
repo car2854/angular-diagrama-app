@@ -34,7 +34,7 @@
               </ng-container>
               <ng-template #isAdmin>
                 <i class="fa fa-user pe-2" aria-hidden="true"></i>{{usuario.name}} <code>(user)</code>
-                <button *ngIf="user._id === reunion.user" class="btn btn-danger" (click)="kickUser(usuario._id)">
+                <button *ngIf="user._id === reunion.user" class="btn btn-danger" (click)="kickUser(usuario._id, usuario.name)">
                   <i class="fa fa-times" aria-hidden="true"></i>
                 </button>
               </ng-template>

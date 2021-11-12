@@ -284,10 +284,10 @@ export class EntrarReunionComponent implements OnInit {
       })
   }
 
-  public kickUser = (idUser: string) => {
+  public kickUser = (idUser: string, userName: string) => {
     Swal.fire({
       title: 'Estas seguro?',
-      text: "Quieres expulsar a este usuario de la reunion?",
+      text: `Quieres expulsar a ${userName} de la reunion?`,
       icon: 'warning',
       showCancelButton: true,
       confirmButtonColor: '#3085d6',
