@@ -29,11 +29,13 @@ const configDiagram = (diagram:any) => {
   );
 
   diagram.linkTemplate = $(go.Link, {
-    curve: go.Link.JumpOver,
-    routing: go.Link.AvoidsNodes,
-    corner: 5,
-    toShortLength: 4
-  },$(go.Shape), $(go.Shape, { 
+    relinkableFrom: true, relinkableTo: true, reshapable: true, resegmentable: true
+  },
+  new go.Binding("points").makeTwoWay(),
+  // remember the Link.routing too
+  new go.Binding("routing", "routing", go.Binding.parseEnum(go.Link, go.Link.AvoidsNodes))
+    .makeTwoWay(go.Binding.toString),
+  $(go.Shape), $(go.Shape, { 
     toArrow: "Standard"
   }), $(go.Panel, "Auto", $(go.Shape, "Rectangle", { 
     fill: "#2149c000",

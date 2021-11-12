@@ -211,7 +211,6 @@ export class EntrarReunionComponent implements OnInit {
         existe = true;
       }
     });
-    console.log(existe);
     
     if (!existe && this.showChat){
       this.chatBox.nativeElement.classList.remove('show-chat');
@@ -230,7 +229,6 @@ export class EntrarReunionComponent implements OnInit {
 
     this.reunionServices.salirReunion(this.reunion._id)
       .subscribe((resp:any) => {
-        console.log(resp);
       }, (err:any) => {
         console.log(err);
       });
