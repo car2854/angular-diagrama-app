@@ -148,6 +148,13 @@ export class EntrarReunionComponent implements OnInit {
           nombreUsuario: resp.nombreUsuario
         }
         this.mensajes.push(mensaje);
+
+        if (resp.de != this.user._id && !this.showChat){
+          this.showChat = !this.showChat;
+          this.chatBox.nativeElement.classList.remove('hidden-chat');
+          this.chatBox.nativeElement.classList.add('show-chat');
+        }
+
       });
 
   }
