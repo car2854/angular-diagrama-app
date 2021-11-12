@@ -102,8 +102,12 @@ hr{
 
 .usuariosOnline ul{
   display: grid;
-  grid-template-columns: repeat(5, 1fr);
+  grid-template-columns: repeat(4, 1fr);
   list-style: none;
+}
+
+.usuariosOnline ul li{
+  /* background-color: #3358c8; */
 }
 
 .chatBox{
@@ -145,6 +149,7 @@ hr{
 .chatBox .chat-content .chat-body{
   height: 250px;
   overflow-y: scroll;
+  padding: 8px 15px;
 }
 
 .hidden-chat{
@@ -153,4 +158,20 @@ hr{
 
 .show-chat{
   height: 290px;
+}
+
+.chatBox .chat-content .chat-body .message{
+  text-align: left;
+}
+
+.chatBox .chat-content .chat-body .message h5{
+  font-size: 15px;
+}
+
+.chatBox .chat-content .chat-body .message h5 span{
+  font-size: 13px;
+}
+
+code{
+  font-size: 12px;
 }

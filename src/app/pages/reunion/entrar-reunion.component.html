@@ -28,7 +28,14 @@
           <p class="text-center">Usuarios Online <i class="fa fa-users" aria-hidden="true"></i></p>
           <hr>
           <ul>
-            <li *ngFor="let usuario of usuariosOnline">{{usuario.name}}</li>
+            <li *ngFor="let usuario of usuariosOnline">
+              <ng-container *ngIf="usuario._id === reunion.user; else isAdmin">
+                <i class="fa fa-user-o pe-2" aria-hidden="true"></i>{{usuario.name}} <code>(admin)</code>
+              </ng-container>
+              <ng-template #isAdmin>
+                <i class="fa fa-user pe-2" aria-hidden="true"></i>{{usuario.name}} <code>(user)</code>
+              </ng-template>
+            </li>
           </ul>
         </div>
         
@@ -66,11 +73,10 @@
     
         <div class="chat-body">
     
-          <div>
-            <p>Carlos:</p>
-            <p>Hola a todos</p>
+          <div class="message">
+            <h5 *ngFor="let mensaje of mensajes">{{mensaje.nombreUsuario}}: <span>{{mensaje.mensaje}}</span></h5>
           </div>
-    
+  
         </div>
         
         <input type="text" (keypress)="sendMessage($event)">

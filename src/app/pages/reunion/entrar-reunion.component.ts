@@ -16,6 +16,7 @@ const $ = go.GraphObject.make;
 import { configPalette, loadPalette2, loadPalette3 } from '../../helpers/loadPalette';
 import { configDiagram } from 'src/app/helpers/loadDiagram';
 import { actor, appMovil, appWeb, contenido, dataBase } from 'src/app/helpers/loadShapes';
+import { Mensaje } from '../../interfaces/mensaje.interface';
 
 @Component({
   selector: 'app-entrar-reunion',
@@ -34,9 +35,11 @@ export class EntrarReunionComponent implements OnInit {
   private showChat: boolean = false;
 
 
-  private user! :User;
+  public user! :User;
 
   public usuariosOnline: User[] = [];
+
+  public mensajes: Mensaje[] = [];
 
   public reunion!: Reunion;
   public cargando: boolean = true;
@@ -51,6 +54,7 @@ export class EntrarReunionComponent implements OnInit {
   private subcriptionEntradaUsuario!: Subscription;
   private subcriptionObtenerDiagrama!: Subscription;
   private subcriptionSalidaUsuario!: Subscription;
+  private subcriptionMensaje!: Subscription;
 
   constructor(
     private router: Router,
@@ -136,7 +140,15 @@ export class EntrarReunionComponent implements OnInit {
 
       });
 
-
+    this.subcriptionMensaje = this.reunionSocketService.escucharMensajes()
+      .subscribe((resp:any) => {
+        const mensaje: Mensaje = {
+          idUser: resp.de,
+          mensaje: resp.mensaje,
+          nombreUsuario: resp.nombreUsuario
+        }
+        this.mensajes.push(mensaje);
+      });
 
   }
 
@@ -178,7 +190,12 @@ export class EntrarReunionComponent implements OnInit {
       let target = event.target || event.srcElement
       if(target.value.trim().length > 0){
         // TODO enviar mensaje por Socket
-        console.log(target.value);
+        this.reunionSocketService.enviarMensaje(
+          this.reunion._id, 
+          this.user._id, 
+          this.user.name,
+          target.value
+        );
         
         target.value = '';
       }
@@ -207,6 +224,7 @@ export class EntrarReunionComponent implements OnInit {
     this.subcriptionEntradaUsuario.unsubscribe();
     this.subcriptionObtenerDiagrama.unsubscribe();
     this.subcriptionSalidaUsuario.unsubscribe();
+    this.subcriptionMensaje.unsubscribe();
 
     this.reunionSocketService.salirReunion(this.reunion._id, this.user._id, this.user.name);
 
