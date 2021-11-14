@@ -43,7 +43,7 @@
 .content{
   top: 80px;
   position: relative;
-  padding: 25px 80px;
+  padding: 25px 5%;
 }
 
 .nav1 h5{
@@ -73,4 +73,10 @@
 .active{
   font-weight: bold;
   background-color: #2148C0;
+}
+
+@media (max-width: 1024px) {
+  .content{
+    padding: 25px 2%;
+  }
 }

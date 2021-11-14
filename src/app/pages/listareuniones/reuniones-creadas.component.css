@@ -1,8 +1,6 @@
 table{
-
-  width: 100%;
   border: 1px solid black;
-
+  width: 100%;
 }
 
 i{
@@ -10,10 +8,10 @@ i{
 }
 
 table tr th{
-  padding: 5px 8px;
+  background-color: #ff80aa50;
   border-bottom: 1px solid black;
   border-right: 1px solid black;
-  background-color: #ff80aa50;
+  padding: 5px 8px;
 }
 
 table tr td{
@@ -26,8 +24,8 @@ table .mas-datos:hover{
 }
 
 table tr #fecha{
-  width: 150px;
   text-align: center;
+  width: 150px;
 }
 
 table tr .fecha{
@@ -41,8 +39,8 @@ table tr #opciones{
 
 table tr .opciones{
   display: flex;
-  justify-content: center;
   gap: 8px;
+  justify-content: center;
 }
 
 #contrasenia, #codigo{
@@ -60,18 +58,24 @@ table tr .opciones{
 }
 
 .titulo{
-  margin: 0px 0px 40px 0px;
-  display: grid;
-  grid-template-columns: repeat(2, 1fr);
+  display: flex;
+}
+
+.title{
+  width: 100%;
 }
 
 .boton{
-  justify-self: right;
+  width: max-content;
+}
+
+.boton button{
+  width: max-content;
 }
 
 .equis{
-  font-size: 100px;
   color: red;
+  font-size: 100px;
 }
 
 .notExist{
@@ -79,10 +83,14 @@ table tr .opciones{
 }
 
 .divNotExit{
-  padding: 30px 0px;
   border: 1px solid #2148C0;
+  padding: 30px 0px;
 }
 
 span{
   font-weight: 400;
+}
+
+@media (max-width: 860px) {
+  
 }

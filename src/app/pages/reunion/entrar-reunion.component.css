@@ -18,6 +18,7 @@ span{
   gap: 5px;
   justify-content: center;
   justify-self: right;
+  flex-wrap: wrap;
 }
 
 
@@ -103,6 +104,7 @@ hr{
 .usuariosOnline ul{
   display: grid;
   grid-template-columns: repeat(4, 1fr);
+  justify-items: center;
   list-style: none;
 }
 
@@ -176,4 +178,87 @@ hr{
 
 code{
   font-size: 12px;
+}
+
+
+@media (max-width: 880px) {
+  .usuariosOnline ul{
+    grid-template-columns: repeat(3, 1fr);
+  }
+
+  #pizarra{
+    display: grid;
+    gap: 5px;
+  }
+
+  .paleta{
+    height: 120px;
+    text-align: center;
+    overflow-y: hidden;
+    width: 100%;
+    display: flex;
+  }
+
+  .lv1{
+    width: 85%;
+  }
+
+  .lv2{
+    width: 15%;
+  }
+
+  #diagrama {
+    background-color: #2149c028;
+    border: 1px solid #2148C0;
+    border-radius: 5px;
+    height: 100px;
+    overflow: hidden;
+    width: 100%;
+  }
+
+  #paletaNivel2 {
+    background-color: #2149c028;
+    border: 1px solid #2148C0;
+    border-radius: 5px;
+    overflow: hidden;
+    transition: 0.3s;
+    width: 100%;
+    height: 100px;
+  }
+  
+  #paletaNivel3 {
+    background-color: #2149c028;
+    border: 1px solid #2148C0;
+    border-radius: 5px;
+    overflow: hidden;
+    transition: 0.3s;
+    width: 100%;
+    height: 100px;
+  }
+
+  .diagrama{
+    width: 100%;
+  }
+
+  code{
+    visibility: hidden;
+  }
+}
+
+@media (max-width: 768px) {
+  
+  .lv1{
+    width: 85%;
+  }
+
+  .lv2{
+    width: 100px;
+  }
+
+}
+
+@media (max-width: 630px) {
+  .usuariosOnline ul{
+    grid-template-columns: repeat(1, 1fr);
+  }
 }

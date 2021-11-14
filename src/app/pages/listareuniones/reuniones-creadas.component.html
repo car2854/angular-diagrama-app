@@ -5,7 +5,9 @@
 <ng-template #elseTemplate>
   
   <section class="titulo">
-    <h1>Lista de pizarras creadas <span *ngIf="reuniones.length>0">{{reuniones.length}}</span></h1>
+    <div class="title">
+      <h1>Lista de pizarras creadas <span *ngIf="reuniones.length>0">{{reuniones.length}}</span></h1>
+    </div>
     <div class="boton">
       <button 
         [routerLink]="[ '/main/nuevaReunion' ]"
